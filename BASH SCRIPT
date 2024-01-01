@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Variables
+INSTANCE_TYPE="t2.micro"
+KEY_NAME="YourKeyName" # Replace with your key name
+SECURITY_GROUP="YourSecurityGroup" # Replace with your security group
+AMI_ID="ami-xxxxxx" # Replace with the AMI ID for Ubuntu
+SUBNET_ID="subnet-xxxxxx" # Replace with your Subnet ID (optional)
+
+# Launch EC2 Instance
+echo "Launching EC2 Instance..."
+instance_id=$(aws ec2 run-instances --image-id $AMI_ID --count 1 --instance-type $INSTANCE_TYPE --key-name $KEY_NAME --security-groups $SECURITY_GROUP --query 'Instances[0].InstanceId' --output text)
+
+echo "Instance ID: $instance_id"
+
+# Wait for the instance to be in running state
+echo "Waiting for instance to be in 'running' state..."
+aws ec2 wait instance-running --instance-ids $instance_id
+
+# Get Public IP Address
+public_ip=$(aws ec2 describe-instances --instance-ids $instance_id --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
+
+echo "Instance Public IP: $public_ip"
+
+# SSH and Install LAMP
+echo "Installing LAMP on the instance..."
+ssh -o "StrictHostKeyChecking no" -i /path/to/key.pem ubuntu@$public_ip << 'EOF'
+  sudo apt update
+  sudo apt install -y apache2
+  sudo apt install -y mysql-server
+  sudo mysql_secure_installation
+  sudo apt install -y php libapache2-mod-php php-mysql
+  sudo systemctl restart apache2
+EOF
+
+echo "LAMP installation complete. Access the server at http://$public_ip/"
