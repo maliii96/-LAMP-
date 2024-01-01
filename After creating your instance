@@ -6,4 +6,4 @@ If not you will get a message saying the "private key shouldn't be accessible by
 Command:( ~mv ~/Downloads/yourkey.pem ~/.ssh)
 
 Make sure to create your keypair and change the permissions to read only (sudo chmod 0400 yourkey.pem)
-
+This will allow to only give it READ access only
