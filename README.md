@@ -41,7 +41,6 @@ Testing🛠️
 I eventually started to play around with the script to see what works and doesn't. Thats where i found out that I could completely take out portions of the Bash script and it would still run fine. It took me so many attempts.
 
 SSH Nuances🚪
-
 During this project, I honed my understanding of SSH intricacies, emphasizing patience and precision.
 One crucial insight was the importance of instance readiness. A running instance doesn't guarantee it's ready for SSH. Waiting for initialization is key to seamless connections.
 
