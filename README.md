@@ -1,4 +1,4 @@
-# -LAMP-
+# -(L)(A)(M)(P)-
 
 BASH Chronicles: AWS & The LAMP Acension Saga
 
