@@ -1,7 +1,5 @@
 # -(L)(A)(M)(P)-
 
-BASH Chronicles: AWS & The LAMP Acension Saga
-
 What is a LAMP stack?
 Linux: The "L" in LAMP represents the operating system, which is typically some flavor of the Linux operating system. Linux provides the foundational infrastructure for hosting web applications.
 
@@ -14,6 +12,9 @@ PHP: The "P" in LAMP stands for PHP, which is a server-side scripting language u
 These are the basic components that make up a website/web application. Of course theirs other variations of the LAMP stack but this is just the basics.🌟
 
 
+
+ BASH Chronicles: AWS & The LAMP Acension Saga
+ 
  I've been working on a project where I use a Bash script to setup a LAMP (Linux, Apache, MySQL, PHP) stack on a AWS instance that you freshly created. Instead of remoting into and installing everything one by one this script would do all that for you.
 
 Purpose🎯
