@@ -2,31 +2,49 @@
 #!/bin/bash
 
 # Variables
-INSTANCE_TYPE="t2.micro"
-KEY_NAME="YourKeyName" # Replace with your key name
-SECURITY_GROUP="YourSecurityGroup" # Replace with your security group
-AMI_ID="ami-xxxxxx" # Replace with the AMI ID for Ubuntu
-SUBNET_ID="subnet-xxxxxx" # Replace with your Subnet ID (optional)
-instance_id="Your AWS Instance id"
+instance_id="your-instance-id" # Replace with your actual instance ID
+key_path="/path/to/your/key.pem" # Replace with your actual key path
 
-# Launch EC2 Instance
-echo "Launching EC2 Instance..."
+# Validate instance ID
+if [ -z "$instance_id" ]; then
+    echo "Instance ID not specified. Exiting."
+    exit 1
+fi
 
 
-# Get Public IP Address
+# Fetch Public IP of the instance
+echo "Retrieving Public IP for instance: $instance_id"
 public_ip=$(aws ec2 describe-instances --instance-ids $instance_id --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
 
-echo "Instance Public IP: $public_ip"
+# Check if Public IP is retrieved
+if [ -z "$public_ip" ]; then
+    echo "Failed to retrieve Public IP. Exiting."
+    exit 1
+fi
+
+echo "Public IP retrieved: $public_ip"
+
+# Function to install LAMP stack
+install_lamp() {
+    echo "Updating package lists..."
+    sudo apt-get update -y
+
+    echo "Installing Apache..."
+    sudo apt-get install apache2 -y
+
+    echo "Installing MySQL..."
+    sudo apt-get install mysql-server -y
+    # Replace this with commands for non-interactive mysql_secure_installation
+
+    echo "Installing PHP..."
+    sudo apt-get install php libapache2-mod-php php-mysql -y
+
+    echo "Restarting Apache..."
+    sudo systemctl restart apache2
+}
 
 # SSH and Install LAMP
-echo "Installing LAMP on the instance..."
-ssh -o "StrictHostKeyChecking yes" -i /path/to/key.pem ubuntu@$public_ip << 'EOF'
-  sudo apt update
-  sudo apt install -y apache2
-  sudo apt install -y mysql-server
-  sudo mysql_secure_installation
-  sudo apt install -y php libapache2-mod-php php-mysql
-  sudo systemctl restart apache2
-EOF
+echo "Connecting to instance and installing LAMP..."
+ssh -o "StrictHostKeyChecking=accept-new" -i "$key_path" ubuntu@"$public_ip" "$(typeset -f); install_lamp"
 
 echo "LAMP installation complete. Access the server at http://$public_ip/"
