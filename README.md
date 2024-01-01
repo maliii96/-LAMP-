@@ -1,4 +1,4 @@
-# -(L)(A)(M)(P)-
+# -(L)(A)(M)(P) BASH SCRIPT-
 
 What is a LAMP stack?
 Linux: The "L" in LAMP represents the operating system, which is typically some flavor of the Linux operating system. Linux provides the foundational infrastructure for hosting web applications.
