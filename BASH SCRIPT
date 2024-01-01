@@ -20,7 +20,7 @@ echo "Instance Public IP: $public_ip"
 
 # SSH and Install LAMP
 echo "Installing LAMP on the instance..."
-ssh -o "StrictHostKeyChecking no" -i /path/to/key.pem ubuntu@$public_ip << 'EOF'
+ssh -o "StrictHostKeyChecking yes" -i /path/to/key.pem ubuntu@$public_ip << 'EOF'
   sudo apt update
   sudo apt install -y apache2
   sudo apt install -y mysql-server
