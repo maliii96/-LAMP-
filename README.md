@@ -2,10 +2,10 @@
 
 BASH Chronicles: AWS & The LAMP Acension Saga
 
-'WHATS GOOD' I've been working on a project where I use a Bash script to set a LAMP (Linux, Apache, MySQL, PHP) stack on a AWS instance that your freshly created. Instead of remoting into and installing everything one by one this script would do all that for you.
+'WHATS GOOD' I've been working on a project where I use a Bash script to setup a LAMP (Linux, Apache, MySQL, PHP) stack on a AWS instance that you freshly created. Instead of remoting into and installing everything one by one this script would do all that for you.
 
-The Challenge
-The main goal was to automate the creation of an Ubuntu VM in AWS and configure it as a LAMP server. I'm not going to lie I thought it would be simple.
+Purpose
+The main goal was to automate the task of sshing  into a AWS instance and configure it as a LAMP server.
 
 Issues Encountered
 Waiting for Instance to Run: The first major hurdle was dealing with the wait time for the EC2 instance. It took forever and eventually just timed out.
