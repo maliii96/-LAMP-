@@ -47,4 +47,4 @@ install_lamp() {
 echo "Connecting to instance and installing LAMP..."
 ssh -o "StrictHostKeyChecking=accept-new" -i "$key_path" ubuntu@"$public_ip" "$(typeset -f); install_lamp"
 
-echo "LAMP installation complete. Access the server at http://$public_ip/"
+echo "YEAAAAAHHHHH BUDDDDDYYYYYYY". Access the server at http://$public_ip/"
