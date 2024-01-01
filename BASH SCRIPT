@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # Variables
@@ -6,6 +7,7 @@ KEY_NAME="YourKeyName" # Replace with your key name
 SECURITY_GROUP="YourSecurityGroup" # Replace with your security group
 AMI_ID="ami-xxxxxx" # Replace with the AMI ID for Ubuntu
 SUBNET_ID="subnet-xxxxxx" # Replace with your Subnet ID (optional)
+instance_id="Your AWS Instance id"
 
 # Launch EC2 Instance
 echo "Launching EC2 Instance..."
