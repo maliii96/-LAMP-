@@ -1,9 +1,17 @@
-After creating you instance in AWS you want to make sure you have your security groups to allow ports 22
-and port 80.
+Configure Security Groups
+Make sure your security groups allow traffic on ports 22 and 80. 
+These ports are essential for SSH access and web server communication. Adjust your security group rules accordingly.
 
-Make sure to move your key.pem out of the downloads file and into the .ssh folder file in order to actually use the key pair.
-If not you will get a message saying the "private key shouldn't be accessible by others". Meaning you need to move it to your secret folder.
-Command:( ~mv ~/Downloads/yourkey.pem ~/.ssh)
+Move Your Private Key
+To use your key pair for SSH access, move your key.pem file out of the "Downloads" folder and into the .ssh directory. 
+This step is crucial to prevent any security warnings. You may encounter a message stating that the "private key shouldn't be accessible by others.
+command ex: mv ~/Downloads/yourkey.pem ~/.ssh
 
-Make sure to create your keypair and change the permissions to read only (sudo chmod 0400 yourkey.pem)
-This will allow to only give it READ access only
+Secure Your Key Pair
+For added security, create your key pair and change its permissions to read-only.
+command ex: sudo chmod 0400 ~/.ssh/yourkey.pem
+This ensures that the key has read-only access, providing an additional layer of protection.
+
+
+
+
