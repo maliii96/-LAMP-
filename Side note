@@ -1,0 +1,4 @@
+After creating you instance in AWS you want to make sure you have your security groups to allow ports 22 and 80.
+
+Make sure to create your keypair and change the permissions to read only (sudo chmod 0400 (Your key)
+
