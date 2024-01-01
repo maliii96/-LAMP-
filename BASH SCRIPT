@@ -11,13 +11,7 @@ instance_id="Your AWS Instance id"
 
 # Launch EC2 Instance
 echo "Launching EC2 Instance..."
-instance_id=$(aws ec2 run-instances --image-id $AMI_ID --count 1 --instance-type $INSTANCE_TYPE --key-name $KEY_NAME --security-groups $SECURITY_GROUP --query 'Instances[0].InstanceId' --output text)
 
-echo "Instance ID: $instance_id"
-
-# Wait for the instance to be in running state
-echo "Waiting for instance to be in 'running' state..."
-aws ec2 wait instance-running --instance-ids $instance_id
 
 # Get Public IP Address
 public_ip=$(aws ec2 describe-instances --instance-ids $instance_id --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
